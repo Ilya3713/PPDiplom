@@ -14,7 +14,6 @@ auth_data = {
     'response_type': 'token',
     'v': '5.101'
 }
-# print('?'.join((BASE_URL, urlencode(auth_data))))
 
 TOKEN = ''
 
@@ -148,7 +147,7 @@ class User:
 
     def add_to_bd(self):
         client = MongoClient()
-        obiwankenolya_db = client['obiwankenolya']
+        mikhailutca_db = client['mikhailutca']
         vkinder_collection = obiwankenolya_db['vkinder']
         with open('vkinder.json') as file:
             vkinder_json = json.load(file)
@@ -159,7 +158,7 @@ class User:
                     'last_name': person['last_name'],
                     'top3_photos': person['top3_photos']
                 }
-                obiwankenolya_db.vkinder_collection.insert_one(partner)
+                mikhailutca_db.vkinder_collection.insert_one(partner)
         return vkinder_collection
 
 
