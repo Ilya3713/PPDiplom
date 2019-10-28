@@ -74,7 +74,7 @@ class User:
             search_sexes = [0, self_sex]
         elif sexual_self == 'bi':
             search_sexes = config.sex
-        else:   #'geter'
+        else:  
             search_sexes = list(set(config.sex).difference({0, self_sex}))
 
         search_statuses = config.relation
@@ -105,28 +105,28 @@ class User:
                                                                      status=search_status))
                     res_search.update(set_ids)
             iter += 1
-            # из множества res_search вычитаем множество ids_saved_to_db
+         
             res_search.difference_update(set(list_ids_saved_to_db))
         return list(res_search)
 
     def get_weight(self, other_user):
         weight = 0
-        # общие друзья
+     
         if hasattr(other_user, 'common_count'):
             if other_user.common_count > 0:
                 weight += config.weight_common_friends
-        # общие группы
+      
         list_groups_self = self.get_list_ids_groups()
         list_groups_other = other_user.get_list_ids_groups()
         if set(list_groups_self).intersection(set(list_groups_other)):
             weight += config.weight_common_groups
-        # общие интересы
+      
         if self.get_intersection_interests(other_user, 'interests'):
             weight += config.weight_interests
-        # общие музыкальные предпочтения
+    
         if self.get_intersection_interests(other_user, 'music'):
             weight += config.weight_music
-        # общие книги
+     
         if self.get_intersection_interests(other_user, 'books'):
             weight += config.weight_books
         return weight
@@ -191,7 +191,7 @@ class User:
         sorted_list_top10_dict = sorted(list_dict,
                                         key=lambda user: user['weight'],
                                         reverse=True)[0:10]
-        # сохранить в DB  и в файл
+     
         if sorted_list_top10_dict:
             with open('data.json', 'w', encoding='utf-8') as f:
                 json.dump(sorted_list_top10_dict, f, ensure_ascii=False, indent=4)
