@@ -1,7 +1,7 @@
 from urllib.parse import urlencode
 
 
-APP_VK_ID = 7143960
+APP_VK_ID = 7056506
 AUTH_URL = 'https://oauth.vk.com/authorize'
 AUTH_DATA = {
     'client_id': APP_VK_ID,
