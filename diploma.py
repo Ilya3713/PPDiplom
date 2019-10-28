@@ -2,7 +2,7 @@ import time
 from pprint import pprint
 import requests
 import config
-from connectiondb import datingdb as db
+from dbconnect import datdb as db
 import json
 import re
 
