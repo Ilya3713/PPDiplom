@@ -225,6 +225,6 @@ if __name__ == '__main__':
     id_me = 6280082
     me = User(id_me)
     pprint(me.__dict__)
-    print('Новый поиск')
+    print('Начать поиск')
     pprint(me.get_list_top())
 
