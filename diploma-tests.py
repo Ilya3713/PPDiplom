@@ -1,5 +1,5 @@
 import unittest
-import diplom2 as app
+import diploma as app
 from unittest.mock import patch
 
 
